@@ -7,23 +7,16 @@ import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { UsersPage } from '../pages/users/users';
 import { CityPage } from '../pages/city/city';
 import { CountryPage } from '../pages/country/country';
 import { WorldPage } from '../pages/world/world';
-import { ReposPage } from '../pages/repos/repos';
 import { IndexPage } from '../pages/index/index';
-import { OrganisationsPage } from '../pages/organisations/organisations';
 import { UserDetailsPage } from '../pages/user-details/user-details';
-import { GithubUsers } from '../providers/github-users/github-users';
 
 @NgModule({
   declarations: [
     MyApp,
-    UsersPage,
-    ReposPage,
     UserDetailsPage,
-    OrganisationsPage,
     CityPage,
     CountryPage,
     WorldPage,
@@ -37,10 +30,7 @@ import { GithubUsers } from '../providers/github-users/github-users';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    UsersPage,
-    ReposPage,
     UserDetailsPage,
-    OrganisationsPage,
     CityPage,
     CountryPage,
     WorldPage,
@@ -49,8 +39,7 @@ import { GithubUsers } from '../providers/github-users/github-users';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GithubUsers
-  ]
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    ]
 })
 export class AppModule {}
