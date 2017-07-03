@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {GithubRanking} from '../../providers/github-ranking/github-ranking'
 /**
  * Generated class for the WorldPage page.
  *
@@ -14,7 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class WorldPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, githubRanking: GithubRanking) {
+    console.log('test', githubRanking.getLanguages())
   }
 
   ionViewDidLoad() {

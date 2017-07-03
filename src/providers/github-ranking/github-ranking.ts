@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
+import {languages} from '../seed/languages'
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -28,6 +29,10 @@ export class GithubRanking {
   getUserRanking(username: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/userRanking/${username}`)
       .map(res => res.json())
+  }
+
+  getLanguages(){
+    return languages;
   }
 
 }

@@ -12,6 +12,7 @@ import { CountryPage } from '../pages/country/country';
 import { WorldPage } from '../pages/world/world';
 import { IndexPage } from '../pages/index/index';
 import { UserDetailsPage } from '../pages/user-details/user-details';
+import { GithubRanking } from '../providers/github-ranking/github-ranking'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserDetailsPage } from '../pages/user-details/user-details';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-    ]
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GithubRanking
+  ]
 })
 export class AppModule {}
