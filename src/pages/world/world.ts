@@ -13,13 +13,29 @@ import {GithubRanking} from '../../providers/github-ranking/github-ranking'
   templateUrl: 'world.html',
 })
 export class WorldPage {
+  items: { value: string }[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, githubRanking: GithubRanking) {
-    console.log('test', githubRanking.getLanguages())
+  constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking) {
+    this.items = this.githubRanking.getLanguages();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorldPage');
+  }
+
+  initializeItems() {
+    this.items = this.githubRanking.getLanguages();
+  }
+
+  getItems(event) {
+    this.initializeItems();
+    const val = event.target.value;
+
+    if(val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.value.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
 }
