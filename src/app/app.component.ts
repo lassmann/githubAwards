@@ -15,7 +15,6 @@ export class MyApp {
 
   // make HelloIonicPage the root (or first) page
   rootPage = IndexPage;
-  pages: Array<{title: string, component: any}>;
 
   constructor(
     public platform: Platform,
@@ -28,17 +27,8 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  }
-
-  openPage(page) {
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-    // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
   }
 }
