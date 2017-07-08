@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { AdMobFree } from '@ionic-native/admob-free';
 import { CityPage } from '../pages/city/city';
 import { CountryPage } from '../pages/country/country';
 import { WorldPage } from '../pages/world/world';
@@ -43,7 +43,8 @@ import { ListLanguageComponent } from '../components/list-language/list-language
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GithubRanking
+    GithubRanking,
+    AdMobFree
   ]
 })
 export class AppModule {}

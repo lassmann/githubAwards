@@ -5,5 +5,31 @@
 </ion-header>
 
 <ion-content padding >
+  <form (ngSubmit)="searchUsername()" *ngIf="!userdata">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username" name="username"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Search</button>
+  </form>
+
+    <ion-card *ngIf="userdata">
+      <ion-card-header>
+        <h1>Username: {{userdata.username}}</h1>
+      </ion-card-header>
+      <img class="avatar" [src]="userdata.avatar" alt="">
+      <h2 class="city-country"><b>City: {{userdata.city}}</b></h2>
+      <h2 class="city-country"><b>Country: {{userdata.country}}</b></h2>
+
+      <ion-list>
+        <ion-item *ngFor="let ranking of userdata.rankings">
+          <h2><b>Language: </b>{{ranking.language}}</h2>
+          <h3><b>Country:</b> {{ranking.country}}</h3>
+          <h3><b>Worldwide:</b> {{ranking.worldwide}}</h3>
+          <h3><b>Repos:</b> {{ranking.repos}}</h3>
+          <h3><b>Stars:</b> {{ranking.stars}}</h3>
+        </ion-item>
+      </ion-list>
+    </ion-card>
 
 </ion-content>
