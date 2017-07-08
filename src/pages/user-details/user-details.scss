@@ -2,10 +2,19 @@ page-user-details {
   .avatar {
     margin:auto;
     border-radius: 50%;
-    height: 140px;
-    width: 140px;
+    height: 120px;
+    width: 120px;
+    padding: 1px;
+    border: 2px solid black;
   }
   .city-country{
     padding-left: 16px;
+  }
+  .scroll-content{
+    padding: 0;
+  }
+  .header-card{
+    padding: 3px;
+    text-align: center;
   }
 }

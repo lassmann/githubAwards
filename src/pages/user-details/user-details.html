@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>User Awards</ion-title>
+    <ion-title *ngIf="!userdata">User Awards</ion-title>
+    <ion-title *ngIf="userdata">{{userdata.username}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,21 +15,20 @@
   </form>
 
     <ion-card *ngIf="userdata">
-      <ion-card-header>
-        <h1>Username: {{userdata.username}}</h1>
-      </ion-card-header>
+
       <img class="avatar" [src]="userdata.avatar" alt="">
-      <h2 class="city-country"><b>City: {{userdata.city}}</b></h2>
-      <h2 class="city-country"><b>Country: {{userdata.country}}</b></h2>
+      <h2 class="city-country"><b>Username: {{userdata.username}}</b></h2>
+      <h2 class="city-country"><b>City: {{userdata.city || 'N/D'}}</b></h2>
+      <h2 class="city-country"><b>Country: {{userdata.country || 'N/D'}}</b></h2>
 
       <ion-list>
         <ion-item *ngFor="let ranking of userdata.rankings">
           <h2><b>Language: </b>{{ranking.language}}</h2>
           <h3><b>City:</b> {{ranking.city}}</h3>
-          <h3><b>Country:</b> {{ranking.country}}</h3>
-          <h3><b>Worldwide:</b> {{ranking.worldwide}}</h3>
-          <h3><b>Repos:</b> {{ranking.repos}}</h3>
-          <h3><b>Stars:</b> {{ranking.stars}}</h3>
+          <h3><b>Country:</b> {{ranking.country || 'N/D'}}</h3>
+          <h3><b>Worldwide:</b> {{ranking.worldwide || 'N/D'}}</h3>
+          <h3><b>Repos:</b> {{ranking.repos || 'N/D'}}</h3>
+          <h3><b>Stars:</b> {{ranking.stars || 'N/D'}}</h3>
         </ion-item>
       </ion-list>
     </ion-card>
