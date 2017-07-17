@@ -25,7 +25,6 @@ export class UserDetailsPage {
   searchUsername (username:string){
     this.githubRanking.getUserRanking(this.username)
       .subscribe(data => {
-        console.log('test', data)
           this.userdata = data
       })
   }

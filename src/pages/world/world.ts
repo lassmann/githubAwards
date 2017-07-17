@@ -13,10 +13,12 @@ import {GithubRanking} from '../../providers/github-ranking/github-ranking'
   templateUrl: 'world.html',
 })
 export class WorldPage {
-  items: { value: string }[];
+  languages: string[];
+  language;
+  worldRanking: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking) {
-    this.items = this.githubRanking.getLanguages();
+    this.languages = this.githubRanking.getLanguages();
   }
 
   ionViewDidLoad() {
@@ -24,18 +26,18 @@ export class WorldPage {
   }
 
   initializeItems() {
-    this.items = this.githubRanking.getLanguages();
+    this.languages = this.githubRanking.getLanguages();
   }
 
-  getItems(event) {
-    this.initializeItems();
-    const val = event.target.value;
-
-    if(val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.value.toLowerCase().indexOf(val.toLowerCase()) > -1);
+  searchWorldRanking() {
+    this.githubRanking.getWorldRanking(this.language)
+      .subscribe((data: any) => {
+        if(data) {
+          this.worldRanking = data;
+          this.worldRanking.users.shift();
+        }
       })
-    }
   }
+
 
 }

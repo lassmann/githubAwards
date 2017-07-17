@@ -31,7 +31,7 @@ export class GithubRanking {
       .map(res => res.json())
   }
 
-  getLanguages(): { value: string }[]{
+  getLanguages(): string[]{
     return languages;
   }
 

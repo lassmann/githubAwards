@@ -12,15 +12,15 @@ import {GithubRanking} from '../../providers/github-ranking/github-ranking'
   templateUrl: 'list-language.html'
 })
 export class ListLanguageComponent {
-  items: { value: string }[];
+  languages: string[];
 
   constructor(public githubRanking: GithubRanking) {
-    this.items = this.githubRanking.getLanguages();
+    this.languages = this.githubRanking.getLanguages();
   }
 
 
   initializeItems() {
-    this.items = this.githubRanking.getLanguages();
+    this.languages = this.githubRanking.getLanguages();
   }
 
   getItems(event) {
@@ -28,8 +28,8 @@ export class ListLanguageComponent {
     const val = event.target.value;
 
     if(val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.value.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.languages = this.languages.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }

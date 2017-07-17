@@ -14,13 +14,15 @@
 
 
 <ion-content padding>
+  <form  (ngSubmit)="searchWorldRanking()" *ngIf="!userdata">
+    <ion-item>
+      <ion-label>Choose a language</ion-label>
+      <ion-select [(ngModel)]="language" name="language">
+        <ion-option [value]="language" *ngFor="let language of languages">{{language}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!language">Search</button>
+  </form>
 
-  <list-language></list-language>
 
-  <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
-  <!--<ion-list>-->
-    <!--<ion-item *ngFor="let item of items">-->
-      <!--{{ item.value }}-->
-    <!--</ion-item>-->
-  <!--</ion-list>-->
 </ion-content>
