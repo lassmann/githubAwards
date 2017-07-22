@@ -21,6 +21,19 @@
         <ion-option [value]="language" *ngFor="let language of languages">{{language}}</ion-option>
       </ion-select>
     </ion-item>
+    <ion-searchbar
+      [(ngModel)]="city"
+      name="city"
+      [showCancelButton]="true"
+      (ionInput)="getItems($event)"
+      (ionCancel)="dismiss()"
+      placeholder="City">
+    </ion-searchbar>
+    <ion-list *ngIf="showList">
+      <ion-item *ngFor="let item of items" (click)="chooseItem(item)">
+        {{ item }}
+      </ion-item>
+    </ion-list>
     <button ion-button type="submit" [disabled]="!language">Search</button>
   </form>
 </ion-content>
