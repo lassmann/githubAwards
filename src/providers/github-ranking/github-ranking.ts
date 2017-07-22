@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {languages} from '../seed/languages'
+import {cities} from '../seed/cities'
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -33,6 +34,10 @@ export class GithubRanking {
 
   getLanguages(): string[]{
     return languages;
+  }
+
+  getCities(): string[]{
+    return cities;
   }
 
 }
