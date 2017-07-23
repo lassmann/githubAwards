@@ -13,7 +13,6 @@ import { WorldPage } from '../pages/world/world';
 import { IndexPage } from '../pages/index/index';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { GithubRanking } from '../providers/github-ranking/github-ranking'
-// import { ListLanguageComponent } from '../components/list-language/list-language';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { GithubRanking } from '../providers/github-ranking/github-ranking'
     CountryPage,
     WorldPage,
     IndexPage,
-   // ListLanguageComponent
   ],
   imports: [
     BrowserModule,
