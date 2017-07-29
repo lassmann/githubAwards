@@ -37,7 +37,7 @@ export class WorldPage {
   }
 
   updateKey(event:any){
-    let key = Object.keys(event)[0]
+    let key = Object.keys(event)[0];
     this[key] = event[key];
   }
 

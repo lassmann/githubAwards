@@ -9,6 +9,6 @@
   <form  (ngSubmit)="searchCityRanking()" *ngIf="!userdata">
     <autocomplete [list]="languages" [key]="'language'" (selectedItem)="updateKey($event)" [placeholder]="'Language'"></autocomplete>
     <autocomplete [list]="cities" [key]="'city'" (selectedItem)="updateKey($event)" [placeholder]="'City'"></autocomplete>
-    <button ion-button type="submit" [disabled]="!language">Search</button>
+    <button ion-button type="submit" [disabled]="!language && !city">Search</button>
   </form>
 </ion-content>

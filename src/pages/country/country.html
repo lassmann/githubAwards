@@ -10,26 +10,9 @@
 
 <ion-content padding>
   <form  (ngSubmit)="searchCountryRanking()" *ngIf="!userdata">
-    <ion-item>
-      <ion-label>Choose a language</ion-label>
-      <ion-select [(ngModel)]="language" name="language">
-        <ion-option [value]="language" *ngFor="let language of languages">{{language}}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-searchbar
-      [(ngModel)]="country"
-      name="country"
-      [showCancelButton]="true"
-      (ionInput)="getItems($event)"
-      (ionCancel)="dismiss()"
-      placeholder="Country">
-    </ion-searchbar>
-    <ion-list *ngIf="showList">
-      <ion-item *ngFor="let item of items" (click)="chooseItem(item)">
-        {{ item }}
-      </ion-item>
-    </ion-list>
-    <button ion-button type="submit" [disabled]="!language">Search</button>
+    <autocomplete [list]="languages" [key]="'language'" (selectedItem)="updateKey($event)" [placeholder]="'Language'"></autocomplete>
+    <autocomplete [list]="countries" [key]="'country'" (selectedItem)="updateKey($event)" [placeholder]="'Country'"></autocomplete>
+    <button ion-button type="submit" [disabled]="!language && !country">Search</button>
   </form>
 
 </ion-content>

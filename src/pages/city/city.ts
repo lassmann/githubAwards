@@ -39,9 +39,8 @@ export class CityPage {
       })
   }
 
-  updateKey(event:any, key: string){
-    this[key] = event.key;
-    console.log('test', this.language)
+  updateKey(event:any){
+    let key = Object.keys(event)[0];
+    this[key] = event[key];
   }
-
 }
