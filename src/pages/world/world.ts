@@ -15,7 +15,7 @@ import {GithubRanking} from '../../providers/github-ranking/github-ranking'
 export class WorldPage {
   languages: string[];
   worldRanking: any;
-  language = '';
+  language: string = '';
   showList: boolean = false;
   // items: string[];
 
@@ -50,6 +50,10 @@ export class WorldPage {
   chooseLanguage(language: string){
     this.language = language;
     this.showList = false;
+  }
+
+  updateLanguage(event){
+    console.log('test', event)
   }
 
   getItems(ev: any) {
