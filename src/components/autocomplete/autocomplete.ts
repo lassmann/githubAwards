@@ -18,8 +18,6 @@ export class AutocompleteComponent {
   items: string[];
   item: string = '';
   showList: boolean = false;
-  output: any = {};
-
 
   constructor() { }
 
@@ -35,8 +33,7 @@ export class AutocompleteComponent {
   }
 
   chooseItem(item: string){
-    this.output[this.key] = item;
-    this.selectedItem.emit(this.output);
+    this.selectedItem.emit({[this.key]: item});
     this.item = item;
     this.showList = false;
   }
@@ -54,8 +51,7 @@ export class AutocompleteComponent {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
-      this.output[this.key] = val;
-      this.selectedItem.emit(this.output );
+      this.selectedItem.emit({[this.key]: val});
 
       // Show the results
       this.showList = true;
