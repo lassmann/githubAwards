@@ -36,8 +36,9 @@ export class WorldPage {
       })
   }
 
-  updateLanguage(event){
-    this.language = event;
+  updateKey(event:any, key: string){
+    this.language = event.key;
+    console.log('test', this.language)
   }
 
 

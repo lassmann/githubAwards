@@ -12,12 +12,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class AutocompleteComponent {
   @Input() list: string[];
+  @Input() key: string;
   @Input() placeholder: string;
   @Output() selectedItem = new EventEmitter();
   text: string;
   items: string[];
   item: string = '';
   showList: boolean = false;
+
 
   constructor() {
     this.items = this.list;
@@ -33,7 +35,7 @@ export class AutocompleteComponent {
   }
 
   chooseItem(item: string){
-    this.selectedItem.emit(item);
+    this.selectedItem.emit({key:item});
     this.item = item;
     this.showList = false;
   }
@@ -42,10 +44,8 @@ export class AutocompleteComponent {
   getItems(ev: any) {
     // Reset items back to all of the items
     this.initializeItems();
-
     // set val to the value of the searchbar
     let val = ev.target.value;
-
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
 
@@ -53,6 +53,7 @@ export class AutocompleteComponent {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
+      this.selectedItem.emit({key:val});
 
       // Show the results
       this.showList = true;
