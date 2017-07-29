@@ -30,6 +30,7 @@ export class CityPage {
   }
 
   searchCityRanking() {
+    this.city = this.city.replace(' ', '+');
     this.githubRanking.getCityRanking(this.language, this.city)
       .subscribe((data: any) => {
         if(data) {

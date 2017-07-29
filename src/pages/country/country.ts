@@ -30,6 +30,7 @@ export class CountryPage {
   }
 
   searchCountryRanking() {
+    this.country = this.country.replace(' ', '+');
     this.githubRanking.getCountryRanking(this.country, this.language)
       .subscribe((data: any) => {
         if(data) {
