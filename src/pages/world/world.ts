@@ -16,14 +16,8 @@ export class WorldPage {
   languages: string[];
   worldRanking: any;
   language: string = '';
-  showList: boolean = false;
-  // items: string[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking) {
-    this.languages = this.githubRanking.getLanguages();
-  }
-
-  initializeItems() {
     this.languages = this.githubRanking.getLanguages();
   }
 
@@ -42,42 +36,8 @@ export class WorldPage {
       })
   }
 
-  dismiss(){
-    this.language = '';
-    this.showList = false;
-  }
-
-  chooseLanguage(language: string){
-    this.language = language;
-    this.showList = false;
-  }
-
   updateLanguage(event){
-    console.log('test', event)
-  }
-
-  getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the searchbar
-    let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-
-      // Filter the items
-      this.languages = this.languages.filter((language) => {
-        return (language.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      });
-
-      // Show the results
-      this.showList = true;
-    } else {
-
-      // hide the results when the query is empty
-      this.showList = false;
-    }
+    this.language = event;
   }
 
 

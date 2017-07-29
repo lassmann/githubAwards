@@ -23,6 +23,11 @@ export class AutocompleteComponent {
     this.items = this.list;
   }
 
+  dismiss(){
+    this.item = '';
+    this.showList = false;
+  }
+
   initializeItems() {
     this.items = this.list;
   }
