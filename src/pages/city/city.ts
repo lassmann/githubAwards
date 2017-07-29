@@ -30,7 +30,7 @@ export class CityPage {
   }
 
   searchCityRanking() {
-    this.githubRanking.getWorldRanking(this.language)
+    this.githubRanking.getCityRanking(this.language, this.city)
       .subscribe((data: any) => {
         if(data) {
           this.cityRanking = data;

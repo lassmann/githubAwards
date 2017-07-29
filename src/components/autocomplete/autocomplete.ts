@@ -35,8 +35,8 @@ export class AutocompleteComponent {
   }
 
   chooseItem(item: string){
-    this.selectedItem.emit(this.output[this.key] = item );
-
+    this.output[this.key] = item;
+    this.selectedItem.emit(this.output);
     this.item = item;
     this.showList = false;
   }

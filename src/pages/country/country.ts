@@ -25,8 +25,6 @@ export class CountryPage {
     this.countries = this.githubRanking.getCountries();
   }
 
-
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad CountryPage');
   }
