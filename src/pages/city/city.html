@@ -1,39 +1,14 @@
-<!--
-  Generated template for the CityPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <ion-title>city</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
   <form  (ngSubmit)="searchCityRanking()" *ngIf="!userdata">
-    <ion-item>
-      <ion-label>Choose a language</ion-label>
-      <ion-select [(ngModel)]="language" name="language">
-        <ion-option [value]="language" *ngFor="let language of languages">{{language}}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-searchbar
-      [(ngModel)]="city"
-      name="city"
-      [showCancelButton]="true"
-      (ionInput)="getItems($event)"
-      (ionCancel)="dismiss()"
-      placeholder="City">
-    </ion-searchbar>
-    <ion-list *ngIf="showList">
-      <ion-item *ngFor="let item of items" (click)="chooseItem(item)">
-        {{ item }}
-      </ion-item>
-    </ion-list>
+    <autocomplete [list]="languages" [key]="'language'" (selectedItem)="updateKey($event)" [placeholder]="'Language'"></autocomplete>
+    <autocomplete [list]="cities" [key]="'city'" (selectedItem)="updateKey($event)" [placeholder]="'City'"></autocomplete>
     <button ion-button type="submit" [disabled]="!language">Search</button>
   </form>
 </ion-content>

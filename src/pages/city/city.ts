@@ -14,18 +14,15 @@ import {GithubRanking} from '../../providers/github-ranking/github-ranking'
   templateUrl: 'city.html',
 })
 export class CityPage {
-  city = '';
   languages: string[];
+  cities: string[];
+  city = '';
   language;
   cityRanking: any;
-  showList: boolean = false;
-  items: string[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking) {
-  }
-
-  initializeItems() {
-    this.items = this.githubRanking.getCities();
+    this.languages = this.githubRanking.getLanguages();
+    this.cities = this.githubRanking.getCities();
   }
 
   ionViewDidLoad() {
@@ -42,38 +39,9 @@ export class CityPage {
       })
   }
 
-  dismiss(){
-    this.city = '';
-    this.showList = false;
-  }
-
-  chooseItem(city: string){
-    this.city = city;
-    this.showList = false;
-  }
-
-  getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the searchbar
-    let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '' && val.length > 2) {
-
-      // Filter the items
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      });
-
-      // Show the results
-      this.showList = true;
-    } else {
-
-      // hide the results when the query is empty
-      this.showList = false;
-    }
+  updateKey(event:any, key: string){
+    this[key] = event.key;
+    console.log('test', this.language)
   }
 
 }

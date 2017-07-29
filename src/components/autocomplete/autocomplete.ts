@@ -15,15 +15,15 @@ export class AutocompleteComponent {
   @Input() key: string;
   @Input() placeholder: string;
   @Output() selectedItem = new EventEmitter();
-  text: string;
   items: string[];
   item: string = '';
   showList: boolean = false;
+  output: any = {};
 
 
-  constructor() {
-    this.items = this.list;
-  }
+  constructor() { }
+
+  ngOnInit() {  }
 
   dismiss(){
     this.item = '';
@@ -35,7 +35,8 @@ export class AutocompleteComponent {
   }
 
   chooseItem(item: string){
-    this.selectedItem.emit({key:item});
+    this.selectedItem.emit(this.output[this.key] = item );
+
     this.item = item;
     this.showList = false;
   }
@@ -53,7 +54,8 @@ export class AutocompleteComponent {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
-      this.selectedItem.emit({key:val});
+      this.output[this.key] = val;
+      this.selectedItem.emit(this.output );
 
       // Show the results
       this.showList = true;

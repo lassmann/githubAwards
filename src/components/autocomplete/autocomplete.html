@@ -4,7 +4,7 @@
   [showCancelButton]="true"
   (ionInput)="getItems($event)"
   (ionCancel)="dismiss()"
-  placeholder="Language">
+  [placeholder]="placeholder">
 </ion-searchbar>
 <ion-list *ngIf="showList">
   <ion-item *ngFor="let item of items" (click)="chooseItem(item)">
