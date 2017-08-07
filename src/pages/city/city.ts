@@ -33,9 +33,10 @@ export class CityPage {
     this.city = this.city.replace(' ', '+');
     this.githubRanking.getCityRanking(this.language, this.city)
       .subscribe((data: any) => {
+      debugger
         if(data) {
-          this.cityRanking = data;
-          this.cityRanking.users.shift();
+          this.cityRanking = data.users.shift();
+          // this.cityRanking.users.shift();
         }
       })
   }
