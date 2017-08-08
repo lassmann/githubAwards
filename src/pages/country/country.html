@@ -15,6 +15,24 @@
     <button ion-button type="submit" [disabled]="!language && !country">Search</button>
   </form>
 
-  {{countryRanking}}
+  <div *ngIf="countryRanking">
+    <ion-grid>
+      <ion-row>
+        <ion-col>Ranking</ion-col>
+        <ion-col>Username</ion-col>
+        <ion-col>Stars</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let ranking of countryRanking">
+        <ion-col>{{ranking.rank}}</ion-col>
+        <ion-col>
+          <ion-avatar item-left>
+            <img [src]="ranking.avatar">
+          </ion-avatar>
+          {{ranking.username}}
+        </ion-col>
+        <ion-col>{{ranking.stars}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
 </ion-content>

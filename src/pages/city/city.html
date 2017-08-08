@@ -6,15 +6,31 @@
 
 
 <ion-content padding>
-  <form  (ngSubmit)="searchCityRanking()" *ngIf="!cityRanking">
-    <autocomplete [list]="languages" [key]="'language'" (selectedItem)="updateKey($event)" [placeholder]="'Language'"></autocomplete>
-    <autocomplete [list]="cities" [key]="'city'" (selectedItem)="updateKey($event)" [placeholder]="'City'"></autocomplete>
+  <form (ngSubmit)="searchCityRanking()" *ngIf="!cityRanking">
+    <autocomplete [list]="languages" [key]="'language'" (selectedItem)="updateKey($event)"
+                  [placeholder]="'Language'"></autocomplete>
+    <autocomplete [list]="cities" [key]="'city'" (selectedItem)="updateKey($event)"
+                  [placeholder]="'City'"></autocomplete>
     <button ion-button type="submit" [disabled]="!language && !city">Search</button>
   </form>
 
   <div *ngIf="cityRanking">
-    {{cityRanking}}
-
-
+    <ion-grid>
+      <ion-row>
+        <ion-col>Ranking</ion-col>
+        <ion-col>Username</ion-col>
+        <ion-col>Stars</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let ranking of cityRanking">
+        <ion-col>{{ranking.rank}}</ion-col>
+        <ion-col>
+          <ion-avatar item-left>
+            <img [src]="ranking.avatar">
+          </ion-avatar>
+          {{ranking.username}}
+        </ion-col>
+        <ion-col>{{ranking.stars}}</ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

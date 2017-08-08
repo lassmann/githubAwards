@@ -31,12 +31,11 @@ export class CityPage {
 
   searchCityRanking() {
     this.city = this.city.replace(' ', '+');
-    this.githubRanking.getCityRanking(this.language, this.city)
+    this.githubRanking.getCityRanking( this.city, this.language)
       .subscribe((data: any) => {
-      debugger
         if(data) {
-          this.cityRanking = data.users.shift();
-          // this.cityRanking.users.shift();
+          this.cityRanking = data.users;
+          this.cityRanking.shift();
         }
       })
   }

@@ -29,9 +29,8 @@ export class WorldPage {
     this.githubRanking.getWorldRanking(this.language)
       .subscribe((data: any) => {
         if(data) {
-          this.worldRanking = data;
-          this.worldRanking.users.shift();
-          console.log('test', this.worldRanking)
+          this.worldRanking = data.users;
+          this.worldRanking.shift();
         }
       })
   }

@@ -34,8 +34,8 @@ export class CountryPage {
     this.githubRanking.getCountryRanking(this.country, this.language)
       .subscribe((data: any) => {
         if(data) {
-          this.countryRanking = data;
-          this.countryRanking.users.shift();
+          this.countryRanking = data.users;
+          this.countryRanking.shift();
         }
       })
   }
