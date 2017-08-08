@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form  (ngSubmit)="searchWorldRanking()" *ngIf="!userdata">
+  <form  (ngSubmit)="searchWorldRanking()" *ngIf="!worldRanking">
     <autocomplete [list]="languages" [key]="'language'" (selectedItem)="updateKey($event)" [placeholder]="'Language'"></autocomplete>
     <button ion-button type="submit" [disabled]="!language">Search</button>
   </form>
