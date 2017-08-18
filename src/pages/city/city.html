@@ -14,28 +14,32 @@
     <button ion-button type="submit" [disabled]="!language && !city">Search</button>
   </form>
 
-  <div *ngIf="cityRanking">
+
+  <ion-content *ngIf="cityRanking">
     <ion-grid>
-      <ion-row>
-        <ion-col>Ranking</ion-col>
-        <ion-col col-8>Username</ion-col>
-        <ion-col>Stars</ion-col>
+      <ion-row class="ranking-titles">
+        <ion-col><h3>Rank</h3></ion-col>
+        <ion-col col-8><h3>Username</h3></ion-col>
+        <ion-col><h3>Stars</h3></ion-col>
       </ion-row>
       <ion-row *ngFor="let ranking of cityRanking">
-        <ion-col>{{ranking.rank}}</ion-col>
+        <ion-col align-self-center>{{ranking.rank}}</ion-col>
         <ion-col col-8 align-self-start>
-          <ion-item>
-            <ion-avatar item-left>
-              <img [src]="ranking.avatar">
-            </ion-avatar>
-            {{ranking.username}}
-          </ion-item>
+          <ion-list>
+            <button ion-item>
+              <ion-avatar item-left>
+                <img [src]="ranking.avatar">
+              </ion-avatar>
+              <h3><b>{{ ranking.username }}</b></h3>
+            </button>
+          </ion-list>
         </ion-col>
-        <ion-col>{{ranking.stars}}</ion-col>
+        <ion-col>{{ranking.stars}}
+          <ion-icon name="star" class="star-icon"></ion-icon>
+        </ion-col>
       </ion-row>
     </ion-grid>
+  </ion-content>
 
 
-
-  </div>
 </ion-content>
