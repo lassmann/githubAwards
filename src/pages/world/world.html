@@ -18,12 +18,12 @@
     <ion-grid class="grid-world-content">
       <ion-row class="ranking-titles">
         <ion-col class="rank-title">Rank</ion-col>
-        <ion-col class="rank-title" col-8>Username</ion-col>
-        <ion-col class="rank-title">Stars</ion-col>
+        <ion-col class="rank-title" col-7>Username</ion-col>
+        <ion-col class="rank-title" col-3>Stars</ion-col>
       </ion-row>
       <ion-row *ngFor="let ranking of worldRanking">
         <ion-col align-self-center class="rank-section">{{ranking.rank}}</ion-col>
-        <ion-col align-self-center col-8 align-self-start>
+        <ion-col align-self-center col-7 align-self-start>
           <ion-list class="username-list">
             <button ion-item class="username-button">
               <ion-avatar item-left>
@@ -33,7 +33,7 @@
             </button>
           </ion-list>
         </ion-col>
-        <ion-col align-self-center class="stars-section">{{ranking.stars}}
+        <ion-col align-self-center class="stars-section" col-3>{{ranking.stars}}
           <ion-icon name="star" class="star-icon"></ion-icon>
         </ion-col>
       </ion-row>
