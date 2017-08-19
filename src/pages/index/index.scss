@@ -12,11 +12,21 @@ page-index {
   .button-list {
     margin-top: 20px !important;
   }
+  .prize-container {
+    display: flex;
+    .prize {
+      width: 288px;
+      height: 105px;
+      margin: auto;
+    }
+  }
   .image-container {
     margin-top: 20px;
-    width: 100%;
+    display: flex;
     .main-image {
-      width: 100%;
+      width: 288px;
+      height: 152px;
+      margin: auto;
     }
   }
 }
