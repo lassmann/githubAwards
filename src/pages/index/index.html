@@ -1,23 +1,10 @@
 <ion-content class="main-content">
-  <!--<ion-card class="main-card">-->
     <div class="principal-title"><h1>WELCOME TO THE TOP GITHUB USERS</h1></div>
     <ion-list no-lines inset>
-      <button ion-item (click)="goToCity()">
-        <ion-icon name="leaf" item-start></ion-icon>
-        City
-      </button>
-      <button ion-item (click)="gotoCountry()">
-        <ion-icon name="leaf" item-start></ion-icon>
-        Country
-      </button>
-      <button ion-item (click)="goToWorld()">
-        <ion-icon name="leaf" item-start></ion-icon>
-        World
-      </button>
-      <button ion-item (click)="goToDetails()">
-        <ion-icon name="leaf" item-start></ion-icon>
-        User
-      </button>
+      <button ion-button full color="dark" (click)="goToCity()">By City</button>
+      <button ion-button full color="dark" (click)="gotoCountry()">By Country</button>
+      <button ion-button full color="dark" (click)="goToWorld()">world</button>
+      <button ion-button full color="dark" (click)="goToDetails()">User Details</button>
+
     </ion-list>
-  <!--</ion-card>-->
 </ion-content>

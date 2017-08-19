@@ -18,15 +18,15 @@
   <ion-content *ngIf="cityRanking">
     <ion-grid>
       <ion-row class="ranking-titles">
-        <ion-col><h3>Rank</h3></ion-col>
-        <ion-col col-8><h3>Username</h3></ion-col>
-        <ion-col><h3>Stars</h3></ion-col>
+        <ion-col class="rank-title">Rank</ion-col>
+        <ion-col class="rank-title" col-8>Username</ion-col>
+        <ion-col class="rank-title">Stars</ion-col>
       </ion-row>
       <ion-row *ngFor="let ranking of cityRanking">
-        <ion-col align-self-center>{{ranking.rank}}</ion-col>
-        <ion-col col-8 align-self-start>
-          <ion-list>
-            <button ion-item>
+        <ion-col align-self-center class="rank-section">{{ranking.rank}}</ion-col>
+        <ion-col align-self-center col-8 align-self-start>
+          <ion-list class="username-list">
+            <button ion-item class="username-button">
               <ion-avatar item-left>
                 <img [src]="ranking.avatar">
               </ion-avatar>
@@ -34,7 +34,7 @@
             </button>
           </ion-list>
         </ion-col>
-        <ion-col>{{ranking.stars}}
+        <ion-col align-self-center class="stars-section">{{ranking.stars}}
           <ion-icon name="star" class="star-icon"></ion-icon>
         </ion-col>
       </ion-row>
