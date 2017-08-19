@@ -5,7 +5,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="country-content">
   <form (ngSubmit)="searchCountryRanking()" *ngIf="!countryRanking">
     <autocomplete [list]="languages" [key]="'language'" (selectedItem)="updateKey($event)"
                   [placeholder]="'Language'"></autocomplete>
@@ -15,23 +15,28 @@
   </form>
 
   <div *ngIf="countryRanking">
-    <ion-grid>
-      <ion-row>
-        <ion-col>Ranking</ion-col>
-        <ion-col>Username</ion-col>
-        <ion-col>Stars</ion-col>
+    <ion-grid class="grid-country-content">
+      <ion-row class="ranking-titles">
+        <ion-col class="rank-title">Rank</ion-col>
+        <ion-col class="rank-title" col-8>Username</ion-col>
+        <ion-col class="rank-title">Stars</ion-col>
       </ion-row>
       <ion-row *ngFor="let ranking of countryRanking">
-        <ion-col>{{ranking.rank}}</ion-col>
-        <ion-col>
-          <ion-avatar item-left>
-            <img [src]="ranking.avatar">
-          </ion-avatar>
-          {{ranking.username}}
+        <ion-col align-self-center class="rank-section">{{ranking.rank}}</ion-col>
+        <ion-col align-self-center col-8 align-self-start>
+          <ion-list class="username-list">
+            <button ion-item class="username-button">
+              <ion-avatar item-left>
+                <img [src]="ranking.avatar">
+              </ion-avatar>
+              <h3><b>{{ ranking.username }}</b></h3>
+            </button>
+          </ion-list>
         </ion-col>
-        <ion-col>{{ranking.stars}}</ion-col>
+        <ion-col align-self-center class="stars-section">{{ranking.stars}}
+          <ion-icon name="star" class="star-icon"></ion-icon>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-
 </ion-content>
