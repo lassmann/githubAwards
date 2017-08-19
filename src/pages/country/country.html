@@ -1,17 +1,16 @@
-
 <ion-header>
-
   <ion-navbar>
     <ion-title>country</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-  <form  (ngSubmit)="searchCountryRanking()" *ngIf="!countryRanking">
-    <autocomplete [list]="languages" [key]="'language'" (selectedItem)="updateKey($event)" [placeholder]="'Language'"></autocomplete>
-    <autocomplete [list]="countries" [key]="'country'" (selectedItem)="updateKey($event)" [placeholder]="'Country'"></autocomplete>
+  <form (ngSubmit)="searchCountryRanking()" *ngIf="!countryRanking">
+    <autocomplete [list]="languages" [key]="'language'" (selectedItem)="updateKey($event)"
+                  [placeholder]="'Language'"></autocomplete>
+    <autocomplete [list]="countries" [key]="'country'" (selectedItem)="updateKey($event)"
+                  [placeholder]="'Country'"></autocomplete>
     <button ion-button type="submit" [disabled]="!language && !country">Search</button>
   </form>
 
