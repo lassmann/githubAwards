@@ -11,7 +11,7 @@
                   [placeholder]="'Language'"></autocomplete>
     <autocomplete [list]="countries" [key]="'country'" (selectedItem)="updateKey($event)"
                   [placeholder]="'Country'"></autocomplete>
-    <button ion-button type="submit" [disabled]="!language && !country">Search</button>
+    <button ion-button type="submit" [disabled]="!language || !country">Search</button>
   </form>
 
   <div *ngIf="countryRanking">
