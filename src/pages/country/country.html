@@ -25,7 +25,7 @@
         <ion-col align-self-center class="rank-section">{{ranking.rank}}</ion-col>
         <ion-col align-self-center col-7 align-self-start>
           <ion-list class="username-list">
-            <button ion-item class="username-button">
+            <button ion-item class="username-button" (click)="gotoUser(ranking.username )">
               <ion-avatar item-left>
                 <img [src]="ranking.avatar">
               </ion-avatar>

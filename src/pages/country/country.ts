@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {GithubRanking} from '../../providers/github-ranking/github-ranking'
+import {UserDetailsPage} from '../user-details/user-details';
 
 /**
  * Generated class for the CountryPage page.
@@ -40,11 +41,13 @@ export class CountryPage {
       })
   }
 
-
-
   updateKey(event:any){
     let key = Object.keys(event)[0];
     this[key] = event[key];
+  }
+
+  gotoUser(username: string){
+    this.navCtrl.push(UserDetailsPage, {username})
   }
 
 }
