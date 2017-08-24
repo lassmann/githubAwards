@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { GithubRanking } from '../../providers/github-ranking/github-ranking'
 
 /**
@@ -17,7 +17,7 @@ export class UserDetailsPage {
   username: string = '';
   userdata: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking, private loadingCtrl: LoadingController) {
     this.username = navParams.get("username");
     if(this.username) this.searchUsername(this.username);
 
@@ -31,9 +31,17 @@ export class UserDetailsPage {
     // console.log('test', this.username)
   }
 
+  loadingPopup = this.loadingCtrl.create({
+    content: 'Loading...'
+  });
+
   searchUsername(username: string) {
+    this.loadingPopup.present();
     this.githubRanking.getUserRanking(this.username)
-      .subscribe(data => this.userdata = data)
+      .subscribe(data => {
+        this.userdata = data;
+        this.loadingPopup.dismiss();
+      })
   }
 
 }

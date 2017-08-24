@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, LoadingController} from 'ionic-angular';
 import {GithubRanking} from '../../providers/github-ranking/github-ranking'
 import {UserDetailsPage} from '../user-details/user-details';
 
@@ -21,7 +21,7 @@ export class CountryPage {
   language = '';
   countryRanking: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking, private loadingCtrl: LoadingController) {
     this.languages = this.githubRanking.getLanguages();
     this.countries = this.githubRanking.getCountries();
   }
@@ -30,13 +30,19 @@ export class CountryPage {
     console.log('ionViewDidLoad CountryPage');
   }
 
+  loadingPopup = this.loadingCtrl.create({
+    content: 'Loading...'
+  });
+
   searchCountryRanking() {
+    this.loadingPopup.present();
     this.country = this.country.replace(' ', '+');
     this.githubRanking.getCountryRanking(this.country, this.language)
       .subscribe((data: any) => {
         if(data) {
           this.countryRanking = data.users;
           this.countryRanking.shift();
+          this.loadingPopup.dismiss();
         }
       })
   }

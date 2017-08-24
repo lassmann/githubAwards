@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {GithubRanking} from '../../providers/github-ranking/github-ranking'
-import {UserDetailsPage} from '../user-details/user-details';
-
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { GithubRanking } from '../../providers/github-ranking/github-ranking'
+import { UserDetailsPage } from '../user-details/user-details';
 /**
  * Generated class for the CityPage page.
  *
@@ -21,7 +20,7 @@ export class CityPage {
   language;
   cityRanking: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public githubRanking: GithubRanking, private loadingCtrl: LoadingController) {
     this.languages = this.githubRanking.getLanguages();
     this.cities = this.githubRanking.getCities();
   }
@@ -30,23 +29,29 @@ export class CityPage {
     console.log('ionViewDidLoad CityPage');
   }
 
+  loadingPopup = this.loadingCtrl.create({
+    content: 'Loading...'
+  });
+
   searchCityRanking() {
+    this.loadingPopup.present();
     this.city = this.city.replace(' ', '+');
-    this.githubRanking.getCityRanking( this.city, this.language)
+    this.githubRanking.getCityRanking(this.city, this.language)
       .subscribe((data: any) => {
-        if(data) {
+        if (data) {
           this.cityRanking = data.users;
           this.cityRanking.shift();
+          this.loadingPopup.dismiss();
         }
       })
   }
 
-  updateKey(event:any){
+  updateKey(event: any) {
     let key = Object.keys(event)[0];
     this[key] = event[key];
   }
 
-  gotoUser(username: string){
-    this.navCtrl.push(UserDetailsPage, {username})
+  gotoUser(username: string) {
+    this.navCtrl.push(UserDetailsPage, { username })
   }
 }
